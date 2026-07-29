@@ -1,26 +1,47 @@
+# Unified ignore rules for full-stack skill repositories.
+
+### Rust / Cargo ###
 target/
-bin/
-!.mvn/wrapper/maven-wrapper.jar
+**/target/
+Cargo.lock
 !**/src/main/**/target/
 !**/src/test/**/target/
+
+### Java / Maven / Gradle ###
+bin/
+codes/
+.gradle
+/build/
+build/
+**/build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+!.mvn/wrapper/maven-wrapper.jar
+!gradle/wrapper/gradle-wrapper.jar
 .flattened-pom.xml
 .fastRequest
-Cargo.lock
-*.swp
-*.swo
+**/dependency-reduced-pom.xml
+pom.xml.versionsBackup
+*.war
+*.ear
+*.tar
+*.tar.gz
+!/libs/*.jar
 
-### STS ###
+### Spring Tool Suite ###
 .apt_generated
 .classpath
 .factorypath
 .project
 .settings
+.settings/
 .springBeans
 .sts4-cache
 rebel.xml
 
 ### IntelliJ IDEA ###
 .idea
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -31,65 +52,108 @@ rebel.xml
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
 
 ### VS Code ###
 .vscode/
-.claude/
 
-### Mac OS ###
-.DS_Store
-
-**/dependency-reduced-pom.xml
-
-### Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.egg-info/
-
-### Docs
-docs/_build
-.venv/
-
-
-# vibe coding
-.claude
-openspec
-AGENTS.md
-CLAUDE.md
-
-##Log
-logs/
-
-## Frontend (all frontend/ directories across examples and extensions)
-# Dependencies
+### Node.js / frontend ###
+node_modules
+node_modules/
 **/node_modules/
-# Build output
 **/dist/
-**/build/
 **/.output/
-# Vite / bundler caches
 **/.vite/
 **/.cache/
 **/.parcel-cache/
-# Type-check / tsc output
 **/*.tsbuildinfo
-# Env files (may contain secrets)
-**/.env.local
-**/.env.*.local
-# Coverage
 **/coverage/
-# Storybook
 **/storybook-static/
-# boba-tea-shop: generated static assets served by the supervisor-agent
 **/boba-tea-shop/supervisor-agent/**/static/
 
-##agentscope
+### Python ###
+__pycache__/
+*.py[cod]
+*.pyc
+*$py.class
+*.egg-info/
+.venv/
+fix_chinese.py
+
+### Documentation ###
+docs/_build
+
+### Environment and local secrets ###
+.env
+.env.local
+**/.env.local
+**/.env.*.local
+*.json
+!cloud-agents-server/agents/maternal-recovery.json
+assets/personal-asset-index.json
+
+### Logs ###
+logs/
+/logs/
+*.log
+log.*/
+
+### OS files ###
+.DS_Store
+**/.DS_Store
+Thumbs.db
+.metadata
+Servers
+
+### Editor and temporary files ###
+*.swp
+*.swo
+*.cache
+*.diff
+*.patch
+*.tmp
+*.java~
+*.properties~
+*.xml~
+*.gz
+*.http
+
+### Agent and local tooling ###
+.claude
+.claude/
+openspec
+AGENTS.md
+CLAUDE.md
 .agentscope/
+.mimocode/
+.codegraph/
+input/
+trace-report-*.md
 
-## harness db
+### Local databases ###
 **/*.db
+/agentdb.rvf
+/agentdb.rvf.lock
+/ruvector.db
 
+### Local server data ###
+/server/nacos-server/data
+/server/nacos-server/logs
+upload
+gen_code
+
+### Design and media build artifacts ###
+.video-tmp-*/
+**/.video-tmp-*/
+**/_narration/
+**/_narration_*/
+demos/_frames_*.png
+demos/_verify.js
+demos/_verify.mjs
+_style-research/
+**/design-demos/
+demos/**/*.mp4
